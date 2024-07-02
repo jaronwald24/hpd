@@ -1,0 +1,19 @@
+form{
+    margin: 30px 0px;
+  }
+  
+  .viewer{
+    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    z-index: 15;
+  }
+  
+  span{
+    margin-top: 10px;
+    z-index: 50;
+  }

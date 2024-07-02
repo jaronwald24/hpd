@@ -105,7 +105,6 @@ export default function HandPoseDetection() {
                 </canvas>
                 <video
                     style={{
-                        visibility: "hidden",
                         transform: "scaleX(-1)",
                         position: "absolute",
                         top: 0,
