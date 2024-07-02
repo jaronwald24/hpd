@@ -179,6 +179,9 @@ async function setupModal() {
 export default function HandPoseDetection({onSaveSignature, onResetSignature }) {
     const detectorRef = useRef();
     const videoRef = useRef();
+
+    const colorRef = useRef('black');
+
     const [landmarkCtx, setLandmarkCtx] = useState(null);
     const [sigCtx, setSigCtx] = useState(null);
 
@@ -206,9 +209,9 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
 
     const changeColor = (newColor) => {
         setColor(newColor);
+        colorRef.current = newColor;
         console.log("Color changed to:", newColor);
     };
-
 
     useEffect(() => {
         async function initialize() {
@@ -278,6 +281,7 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
                     const thumbCoords = new Point(thumbTip.x, thumbTip.y);
     
                     const distance = calculateDistance(indexFingerCoords, thumbCoords);
+                
     
                     if (distance > 160) {
                         drawText(landmarkCtx, "Ready to Draw", indexFingerCoords.x, indexFingerCoords.y - 20);
@@ -286,8 +290,8 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
                             drawing = true;
                             prev_coords = indexFingerCoords;
                         } else {
-                            console.log(color); // Verify the color used for drawing
-                            drawLine(sigCtx, prev_coords, indexFingerCoords, color); // Use color state here
+                            console.log(colorRef.current); 
+                            drawLine(sigCtx, prev_coords, indexFingerCoords, colorRef.current);
                             prev_coords = indexFingerCoords;
                         }
                         erasing = false;
@@ -344,10 +348,17 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
                                 <button id="saveBtn" onClick={saveSignature}>Save</button>
                                 <div className={styles.colorButtons}> 
                                     <button onClick={() => changeColor('black')} style={{backgroundColor: 'black', height: '70%', width: '10%'}}></button>
-                                    <button onClick={() => changeColor('red')} style={{backgroundColor: 'red', height: '70%', width: '10%'}}></button>
                                     <button onClick={() => changeColor('blue')} style={{backgroundColor: 'blue', height: '70%', width: '10%'}}></button>
-                                    <button onClick={() => changeColor('green')} style={{backgroundColor: 'green', height: '70%', width: '10%'}}></button>
+                                </div>
+                                <div className={styles.colorButtons}> 
+                                    <button onClick={() => changeColor('red')} style={{backgroundColor: 'red', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('orange')} style={{backgroundColor: 'orange', height: '70%', width: '10%'}}></button>
                                     <button onClick={() => changeColor('yellow')} style={{backgroundColor: 'yellow', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('green')} style={{backgroundColor: 'green', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('purple')} style={{backgroundColor: 'purple', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('pink')} style={{backgroundColor: 'pink', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('brown')} style={{backgroundColor: 'brown', height: '70%', width: '10%'}}></button>
+                                    <button onClick={() => changeColor('grey')} style={{backgroundColor: 'grey', height: '70%', width: '10%'}}></button>
                                 </div>
                             </div>
                         </div>
