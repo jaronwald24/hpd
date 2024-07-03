@@ -16,6 +16,11 @@
   z-index: 25;
 }
 
+.pdfContainer {
+  z-index: 25;
+  width: 50%;
+}
+
 .signatureContainer {
   position: relative;
   display: flex;
@@ -104,7 +109,7 @@
 
 .main {
   height: 50%;
-  margin-bottom: 90%;
+  margin-bottom: 10%;
   padding: 2rem 0;
   flex: 1;
   display: flex;

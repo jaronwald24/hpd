@@ -6,6 +6,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { PDFDocument } from 'pdf-lib';
 import { Rnd } from 'react-rnd';
 import './index.css';
+import styles from "../../styles/Home.module.css";
 
 import * as pdfjs from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
@@ -116,7 +117,6 @@ export default function UploadPDF({ signatureDataURL }) {
 
     const handleDragStop = (e, d) => {
         setSignaturePosition({ x: d.x, y: d.y });
-        console.log(`Dragging... x: ${d.x}, y: ${d.y}`);
     };
 
     const handleResizeStop = (e, direction, ref, delta, position) => {
@@ -144,7 +144,7 @@ export default function UploadPDF({ signatureDataURL }) {
     }, [pdfFile]);
 
     return (
-        <div className="container" style={{ zIndex: 25, width: window.innerWidth * 0.5 }}>
+        <div className={styles.pdfContainer} id="pdfContainer">
             <form>
                 <label><h5>Upload PDF</h5></label>
                 <br />

@@ -20,9 +20,7 @@ export default function MainComponent() {
     return (
         <div className={styles.totalContainer}>
             <HandPoseDetection signatureUrl={signatureDataURL} onSaveSignature={handleSaveSignature} onResetSignature={handleResetSignature} />
-            <div className={styles.container}>
-                <UploadPDF signatureDataURL={signatureDataURL} />
-            </div>
+            <UploadPDF signatureDataURL={signatureDataURL} />
         </div>
     );
 }

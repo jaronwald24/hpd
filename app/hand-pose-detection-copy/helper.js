@@ -154,7 +154,7 @@ async function setupModal() {
     modalBtn.onclick = function() {
         modal.style.display = "block";
         span.style.zIndex = 50;
-        document.getElementById("modalContent").style.zIndex = 30;
+        document.getElementById("modalContent").style.zIndex = 35;
         document.getElementById("sigCanvas").style.zIndex = 35; // Bring sigCanvas to the top
         document.getElementById("landmarkCanvas").style.zIndex = 0; // Ensure landmarks are above sigCanvas
         document.querySelectorAll('.modal button').forEach(button => button.style.zIndex = 45);
@@ -165,6 +165,8 @@ async function setupModal() {
         modal.style.display = "none";
         document.getElementById("sigCanvas").style.zIndex = 15; // Reset sigCanvas zIndex
         document.getElementById("landmarkCanvas").style.zIndex = 20; 
+        document.getElementById("pdfContainer").style.zIndex = 25;
+
     }
 
     window.onclick = function(event) {
@@ -172,6 +174,8 @@ async function setupModal() {
             modal.style.display = "none";
             document.getElementById("sigCanvas").style.zIndex = 15; // Reset sigCanvas zIndex
             document.getElementById("landmarkCanvas").style.zIndex = 20;
+            document.getElementById("pdfContainer").style.zIndex = 25;
+
         }
     }
 }
@@ -238,6 +242,8 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
             document.querySelectorAll('.modal button').forEach(button => button.style.zIndex = 45);
             document.getElementById("landmarkCanvas").style.pointerEvents = "none"; // Disable pointer events for landmarkCanvas
             document.getElementById("sigCanvas").style.pointerEvents = "auto"; // Enable pointer events for sigCanvas
+
+            document.getElementById("pdfContainer").style.zIndex = 0;
         });
     
 
@@ -317,7 +323,7 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
                 </h2>
                 <code style={{ marginBottom: '1rem', fontSize: 16 }}>I recommend keeping the browser as Square as possible.</code>
                 <code style={{ marginBottom: '1rem', fontSize: 16 }}>Also, the closer to the boundaries of your camera you get, the shakier it will be.</code>
-                <button style={{zIndex: 25, width: '12%', height: '6%', marginBottom: '3%' }} type="button" onClick={() => {
+                <button style={{zIndex: 25, width: '15%', height: '15%', marginBottom: '3%'}} type="button" onClick={() => {
                     resetSignature();
                     }}>Reset Signature</button>
                 <button id="modalBtn" style={{zIndex: 25, width: '15%', height: '6%', marginBottom: '3%'}}>Draw Signature</button>
