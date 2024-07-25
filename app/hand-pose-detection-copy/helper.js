@@ -165,7 +165,7 @@ async function setupModal() {
         modal.style.display = "none";
         document.getElementById("sigCanvas").style.zIndex = 15; // Reset sigCanvas zIndex
         document.getElementById("landmarkCanvas").style.zIndex = 20; 
-        document.getElementById("pdfContainer").style.zIndex = 25;
+        document.getElementById("pdfContainer").style.zIndex = 35;
 
     }
 
@@ -174,7 +174,7 @@ async function setupModal() {
             modal.style.display = "none";
             document.getElementById("sigCanvas").style.zIndex = 15; // Reset sigCanvas zIndex
             document.getElementById("landmarkCanvas").style.zIndex = 20;
-            document.getElementById("pdfContainer").style.zIndex = 25;
+            document.getElementById("pdfContainer").style.zIndex = 35;
 
         }
     }
@@ -203,6 +203,8 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
 
         const modal = document.getElementById('sigModal');
         modal.style.display = "none";
+        document.getElementById("pdfContainer").style.zIndex = 35;
+
     };
 
     const resetSignature = () => {
@@ -314,19 +316,21 @@ export default function HandPoseDetection({onSaveSignature, onResetSignature }) 
     return (
         <div className={styles.container}>
             <main className={styles.main}>
+            <p style={{justifyContent: "flex-start", width: '100%', fontWeight: 'bold'}}>Step 1: Draw Signature</p>
+            <Link style={{ justifyContent: "flex-start", fontWeight: "bold", zIndex: 30 }} href={'/'}>Home</Link> 
+
                 <h2
                     style={{
                         fontWeight: "normal",
                         zIndex: 50,
                     }}>
-                    <Link style={{ fontWeight: "bold" }} href={'/'}>Home</Link> / Draw Your Signature!
                 </h2>
-                <code style={{ marginBottom: '1rem', fontSize: 16 }}>I recommend keeping the browser as Square as possible.</code>
-                <code style={{ marginBottom: '1rem', fontSize: 16 }}>Also, the closer to the boundaries of your camera you get, the shakier it will be.</code>
-                <button style={{zIndex: 25, width: '15%', height: '15%', marginBottom: '3%'}} type="button" onClick={() => {
+                <p className={styles.text}>I recommend keeping the browser as Square as possible.</p>
+                <p className={styles.text}>Also, the closer to the boundaries of your camera you get, the shakier it will be.</p>
+                <button style={{zIndex: 25, width: '20%', height: '15%', marginBottom: '3%', marginTop: '3%'}} type="button" onClick={() => {
                     resetSignature();
                     }}>Reset Signature</button>
-                <button id="modalBtn" style={{zIndex: 25, width: '15%', height: '6%', marginBottom: '3%'}}>Draw Signature</button>
+                <button id="modalBtn" style={{zIndex: 25, width: '20%', height: '6%', marginBottom: '3%'}}>Draw Signature</button>
                 {signatureDataURL && 
                 <div className={styles.signatureContainer}>
                     <h2 style={{marginBottom: '1rem'}}>Your Signature:</h2>

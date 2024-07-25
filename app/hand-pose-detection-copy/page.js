@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 
 import { useState } from 'react';
 import HandPoseDetection from './helper';
-import UploadPDF from './uploadPDF';
+import UploadPDF from './uploadPDF.js';
 
 export default function MainComponent() {
     const [signatureDataURL, setSignatureDataURL] = useState('');

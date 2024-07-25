@@ -14,11 +14,29 @@
   align-items: center;
   padding: 0 2rem;
   z-index: 25;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
 }
 
 .pdfContainer {
   z-index: 25;
   width: 50%;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin-top: 1%;
+  padding: 1rem;
+}
+
+.viewer {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.viewer .rpv-core__viewer,
+.viewer .rpv-core__inner-page,
+.viewer .rpv-core__outer-page-layer {
+  overflow: hidden !important;
+  touch-action: none;
 }
 
 .signatureContainer {
@@ -148,7 +166,15 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+
 }
+
+.text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+
+}
+
 
 .title,
 .description {
@@ -166,26 +192,27 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+  font-family:  Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .grid {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .card {
-  margin: 1rem;
+  margin: 2rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
+  box-shadow: 5px 5px 10px #888888;
+  border-radius: 15px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 375px;
 }
 
 .card:hover,
@@ -233,6 +260,14 @@
 
 }
 
+.disable-selection {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /*chrome*/
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
